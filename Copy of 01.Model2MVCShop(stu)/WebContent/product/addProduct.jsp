@@ -6,7 +6,7 @@
 
 <html>
 <head>
-<title>상품등록</title>
+<title>상품등록2</title>
 
 <link rel="stylesheet" href="/css/admin.css" type="text/css">
 
