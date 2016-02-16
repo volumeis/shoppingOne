@@ -24,7 +24,7 @@ public class ProductDAO {
 	//Method
 	public void insertProduct(Product prod) throws Exception{
 		
-		System.out.println("ProductDAO - insertProduct Start...");
+		System.out.println("ProductDAO - insmertProduct Start...");
 		
 		Connection con = DBUtil.getConnection();
 
@@ -94,22 +94,12 @@ public class ProductDAO {
 				+ " FROM product ";
 		
 		if (search.getSearchCondition() != null) {
-			/*
-			 * 	<option value="0">상품번호</option>
-				<option value="1">상품명</option>
-				<option value="2">상품가격</option>
-			 */
-			if( search.getSearchKeyword().length() < 1  ){
-				
-			} else if  (search.getSearchCondition().equals("0")) {
-				sql += " WHERE prod_no LIKE '" + search.getSearchKeyword()
-						+ "'";
-			} else if (search.getSearchCondition().equals("1")) {
-				sql += " WHERE prod_name LIKE '%" + search.getSearchKeyword()
-						+ "%'";
-			} else if (search.getSearchCondition().equals("2")) {
-				sql += " WHERE price='" + search.getSearchKeyword()
-				+ "'";
+			if (search.getSearchCondition().equals("0") && !search.getSearchKeyword().equals("") ) {
+				sql += " WHERE prod_no LIKE '" + search.getSearchKeyword() + "'";
+			} else if (search.getSearchCondition().equals("1") && !search.getSearchKeyword().equals("") ) {
+				sql += " WHERE prod_name LIKE '%" + search.getSearchKeyword() + "%'";
+			} else if (search.getSearchCondition().equals("2") && !search.getSearchKeyword().equals("") ) {
+				sql += " WHERE price='" + search.getSearchKeyword()	+ "'";
 			}
 		}
 		sql += " ORDER BY prod_no";

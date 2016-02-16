@@ -40,6 +40,7 @@ public class ListProductAction extends Action {
 		// Business logic ผ๖วเ
 		PurchaseService service=new PurchaseServiceImpl();
 		Map<String,Object> map = service.getSaleList(search);
+		
 		String menu = request.getParameter("menu").equals("manage") ? "manage" : "search";
 		
 		Page resultPage	= 

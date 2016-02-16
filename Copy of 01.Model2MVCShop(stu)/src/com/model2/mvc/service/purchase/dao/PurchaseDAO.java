@@ -175,17 +175,12 @@ public Purchase findPurchase2(int prodNo) throws Exception {
 				+ " (SELECT product.prod_no PRODNO, product.PROD_NAME , product.PRICE FROM product ) pt "
 				+ " WHERE pt.PRODNO = ts.prod_no(+) ";
 		if (search.getSearchCondition() != null) {
-			if( search.getSearchKeyword().length() < 1  ){
-					
-			} else if (search.getSearchCondition().equals("0")) {
-				sql += " AND PROD_NO='" + search.getSearchKeyword()
-						+ "'";
-			} else if (search.getSearchCondition().equals("1")) {
-				sql += " AND PROD_NAME='" + search.getSearchKeyword()
-						+ "'";
-			} else if (search.getSearchCondition().equals("2")) {
-				sql += " AND PRICE='" + search.getSearchKeyword()
-				+ "'";
+			if (search.getSearchCondition().equals("0") && !search.getSearchKeyword().equals("")  ) {
+				sql += " AND PROD_NO='" + search.getSearchKeyword()	+ "'";
+			} else if (search.getSearchCondition().equals("1") && !search.getSearchKeyword().equals("") ) {
+				sql += " AND PROD_NAME='" + search.getSearchKeyword() + "'";
+			} else if (search.getSearchCondition().equals("2") &&  !search.getSearchKeyword().equals("") )  {
+				sql += " AND PRICE='" + search.getSearchKeyword() + "'";
 			}
 		}
 		

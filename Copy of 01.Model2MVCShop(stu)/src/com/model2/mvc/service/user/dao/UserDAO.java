@@ -103,6 +103,7 @@ public class UserDAO {
 				sql += " WHERE user_name LIKE '%" + search.getSearchKeyword()+"%'";
 			}
 		}
+		
 		sql += " ORDER BY user_id";
 		
 		System.out.println("UserDAO::Original SQL :: " + sql);
