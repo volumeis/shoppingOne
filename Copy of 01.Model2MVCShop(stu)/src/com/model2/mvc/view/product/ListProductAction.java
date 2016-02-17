@@ -41,39 +41,46 @@ public class ListProductAction extends Action {
 		PurchaseService service=new PurchaseServiceImpl();
 		Map<String,Object> map = service.getSaleList(search);
 		
-		String menu = request.getParameter("menu").equals("manage") ? "manage" : "search";
+		
 		
 		Page resultPage	= 
 				new Page( currentPage, ((Integer)map.get("totalCount")).intValue(), pageUnit, pageSize);
 		System.out.println("ListProductAction ::"+resultPage);
 			
-		String uri = "";
-		//System.out.println("UsersRole : " + ((User)request.getSession().getAttribute("user")).getRole());
-		
-		// Model 과 View 연결
+	
 		request.setAttribute("list", map.get("list"));
 		request.setAttribute("resultPage", resultPage);
 		request.setAttribute("search", search);
 		
-		System.out.println(((User)request.getSession().getAttribute("user")).getRole().equals("user") );
-		System.out.println( ((User)request.getSession().getAttribute("user")));
-		System.out.println(menu);
+		// Model 과 View 연결
+		String uri = "";
+		User user = ((User)request.getSession().getAttribute("user"));
+		String menu = request.getParameter("menu").equals("manage") ? "manage" : "search";
 		
-		System.out.println("Action - ListProductAction end...");
-		if ( ((User)request.getSession().getAttribute("user"))==null || ((User)request.getSession().getAttribute("user")).getRole().equals("user")  ){
-			System.out.println("1");
+		System.out.println("-- user.toString : " + user );
+		if(user != null)
+			System.out.println("-- user.getRole  : " + user.getRole() );
+		System.out.println("-- menu.toString : " + menu );
+		
+		if ( user == null || user.getRole().equals("user") ){
+		
+			System.out.println("--uri : /product/listProductUser.jsp ");
 			uri = "/product/listProductUser.jsp";
-		} else {
-
-			System.out.println("2");
-			uri = "/product/listProductAdmin.jsp";
-				
-			if( menu.equals("manage")){		
-				System.out.println("3");
+		
+		} else if (user.getRole().equals("admin")) {
+		
+			if(menu.equals("search")) {
+				System.out.println("--uri : /listSale.do ");
 				uri = "/listSale.do";
+			} 
+			else if(menu.equals("manage")){
+				System.out.println("--uri : /product/listProductAdmin.jsp ");
+				uri = "/product/listProductAdmin.jsp";
 			}
+				
 		}
 		
+		System.out.println("Action - ListProductAction end...");
 		return "forward:"+ uri;
 	}
 }

@@ -3,9 +3,7 @@ package com.model2.mvc.framework;
 import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Properties;
-
-import org.apache.catalina.loader.WebappLoader;
+import java.util.Properties; 
 
 public class RequestMapping {
 	
@@ -82,6 +80,7 @@ public class RequestMapping {
 	}
 	
 	//Action 을 정하는부분 path is URI
+	@SuppressWarnings("rawtypes")
 	public Action getAction(String path){
 		Action action = map.get(path);
 		//초기 map에는 아무런 인스턴스가 없으므로 임의의 도메인 첫실행시 map에 저장하는 단계 필요.

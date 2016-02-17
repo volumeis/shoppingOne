@@ -10,8 +10,10 @@ import javax.servlet.http.HttpServletResponse;
 import com.model2.mvc.common.util.HttpUtil;
 
 
+@SuppressWarnings("serial")
 public class ActionServlet extends HttpServlet {
 	
+
 	private RequestMapping mapper;
 
 	/*서버시작시 생성구문 */

@@ -3,6 +3,7 @@ package com.model2.mvc.view.purchase;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.model2.mvc.common.util.CommonUtil;
 import com.model2.mvc.framework.Action;
 import com.model2.mvc.service.domain.Product;
 import com.model2.mvc.service.product.ProductService;
@@ -16,16 +17,17 @@ public class AddPurchaseViewAction  extends Action{
 		
 		int prodNo = Integer.parseInt(request.getParameter("prod_no"));
 		ProductService productService	= new ProductServiceImpl();
-		Product productVO = productService.getProduct(prodNo);
+		Product product = productService.getProduct(prodNo);
 		
+		request.setAttribute("product", product);
 		
+		System.out.println("--product.toString : "+product);
 		
-		request.setAttribute("productVO", productVO);
-		
-		System.out.println(productVO);
 		System.out.println("Action - AddPurchaseViewAction End...");
 		
-		return "forward:/purchase/addPurchaseView.jsp";
+		if(CommonUtil.isLogin(request.getSession()) ){
+			return "forward:/purchase/addPurchaseView.jsp";
+		} else 
+			return "redirect:/user/loginView.jsp";
 	}
-
 }

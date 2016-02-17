@@ -12,7 +12,7 @@
   <!-- 하단 frameSet 부분에서는 다시 두 구역으로 나누고 있음 -->
   <frameset rows="*" cols="160,*" framespacing="0" frameborder="NO" border="0">
     <frame src="/layout/left.jsp" name="leftFrame" scrolling="NO" noresize>
-    <frame src="" name="rightFrame"  scrolling="auto">
+    <frame src="/layout/main.jsp" name="rightFrame"  scrolling="NO">
   </frameset>
 
 </frameset>

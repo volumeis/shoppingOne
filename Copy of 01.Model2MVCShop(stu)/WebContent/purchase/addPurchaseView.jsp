@@ -22,11 +22,11 @@
 	-->
 	</script>
 	</head>
-	
 	<body>
 		<form name="addPurchase" method="post" action="/addPurchase.do">
 		
 		
+
 		<table width="100%" height="37" border="0" cellpadding="0"	cellspacing="0">
 			<tr>
 				<td width="15" height="37">
@@ -45,7 +45,6 @@
 				</td>
 			</tr>
 		</table>
-		
 		<input type="hidden" name="prodNo" value="<%=product.getProdNo() %>" />
 		
 		<table width="600" border="0" cellspacing="0" cellpadding="0"	align="center" style="margin-top: 13px;">
@@ -195,7 +194,6 @@
 				<td height="1" colspan="3" bgcolor="D6D6D6"></td>
 			</tr>
 		</table>
-		
 		<table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top: 10px;">
 			<tr>
 				<td width="53%"></td>

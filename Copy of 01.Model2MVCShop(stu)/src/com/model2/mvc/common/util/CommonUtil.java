@@ -4,6 +4,9 @@ import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import javax.servlet.http.HttpSession;
+
+import com.model2.mvc.service.domain.User;
 
 public class CommonUtil {
 	
@@ -102,5 +105,10 @@ public class CommonUtil {
 		} else {
 			return toAmountStr(amount.toString());
 		}
+	}
+	
+	public static boolean isLogin(HttpSession session) {
+		
+		return (User)session.getAttribute("user") != null;
 	}
 }
